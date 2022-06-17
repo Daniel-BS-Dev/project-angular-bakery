@@ -1,0 +1,107 @@
+<!--INICIO DO CONTEUDO-->
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+        <form #form="ngForm" novalidate>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
+              </h2>
+            </div>
+          </div>                
+
+          <div class="row invoice-info">
+            <div class="col-xs-12">
+              <p class="lead">Endereço de Entrega:</p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <mt-input-container errorMessage="Campo obrigatorio." label="Endereço">
+                <input type="text" class="form-control" required autocomplete="off" name="address" ngModel id="inputSuccess" placeholder="Endereço">
+              </mt-input-container> 
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <!--
+                exemplo de como esta antes do compoment input
+
+                <div class="form-group"
+              [class.has-success]="iptNumber.valid && (iptNumber.dirty || iptNumber.touched)"
+              [class.has-error]="!iptNumber.valid && (iptNumber.dirty || iptNumber.touched)"
+              >
+                <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Número</label>
+                <input type="text" name="number" ngModel minlength="5" #iptNumber="ngModel" required autocomplete="off" class="form-control" id="inputSuccess" placeholder="Número">
+                <span *ngIf="iptNumber.valid && (iptNumber.dirty || iptNumber.touched)" class="help-block"><i class="fa fa-check"> OK</i></span>
+                <span *ngIf="!iptNumber.valid && (iptNumber.dirty || iptNumber.touched)" class="help-block"><i class="fa fa-remove"> Campo obrigatório.</i></span>
+              </div>-->
+              <mt-input-container errorMessage="Campo obrigatorio. Somente números" label="Number">
+                <input type="text" class="form-control" pattern="^[0-9]*$" required autocomplete="off" name="number" ngModel id="inputSuccess" placeholder="Número">
+              </mt-input-container> 
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <mt-input-container label="Complemento">
+                <input type="text" class="form-control" autocomplete="off" name="optionalAddress" ngModel id="inputSuccess" placeholder="Complemento">
+              </mt-input-container> 
+
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="lead">Itens do Pedido:</p>
+            </div>
+            
+              <mt-order-item 
+              [orderItems]="cartItems()" 
+              (increaseQty)="increaseQty($event)"
+              (decreaseQty)="decreaseQty($event)"
+              (remove)="removeQty($event)"
+              ></mt-order-item>
+
+            </div>
+            
+          <!-- /.row -->
+
+          <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-sm-6 col-xs-12">
+              <p class="lead">Formas de Pagamento:</p>
+
+                <div class="form-group">
+                  <mt-input-container errorMessage="Campo obrigatorio.">
+                    <mt-radio [options]="paymentOptions" name="payment" required ngModel></mt-radio>
+                  </mt-input-container>
+                </div>
+
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6 col-xs-12">
+              <p class="lead">Frete e Total:</p>
+
+              <div class="table-responsive">
+                <mt-delivery 
+                  [delivery]="delivery"
+                  [itemsValue]="itemsValue()"
+                ></mt-delivery>
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+
+        </form>
+
+        <div class="row">
+          <div class="col-xs-12" >
+            <button href="order-summary.html" (click)="checkOrder(form.value)" [disabled]="form.invalid || cartItems().length === 0" class="btn btn-success pull-right" ><i class="fa fa-credit-card" 
+              ></i> Concluir Pedido
+            </button>
+          </div>
+        </div>
+
+    </section>
+</section>
+<!-- FIM DO CONTEUDO-->
