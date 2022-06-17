@@ -18,7 +18,7 @@ import { MenuItemsComponent } from './restaurants/restaurant-details/menu-items/
 import { ReviewsComponent } from './restaurants/restaurant-details/reviews/reviews.component';
 import { ShoppingCartService } from './restaurants/restaurant-details/shopping-cart.service';
 import { OrdersComponent } from './orders/orders.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemComponent } from './orders/order-item/order-item.component';
@@ -49,7 +49,7 @@ import { RatingComponent } from './shared/rating/rating.component';
     OrderSummaryComponent,
     RatingComponent,
   ],
-  imports: [BrowserModule, HttpModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, HttpModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
   providers: [RestaurantService, OrderItemService ,ShoppingCartService],
   bootstrap: [AppComponent],
 })

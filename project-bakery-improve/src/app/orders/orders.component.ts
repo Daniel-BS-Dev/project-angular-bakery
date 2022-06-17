@@ -5,6 +5,7 @@ import { OrderItemService } from './order-item.service';
 import { Order, OrderItem } from 'app/models/order';
 import { RestaurantService } from 'app/restaurants/restaurant.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'mt-orders',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
   
 })
 export class OrdersComponent implements OnInit {
+
+  formGroup: FormGroup;
 
   paymentOptions: RadioOption[] = [
     {label: 'Dinheiro', value: 'Mon'},
@@ -21,9 +24,18 @@ export class OrdersComponent implements OnInit {
 
   delivery: number = 8;
 
-  constructor(private service: OrderItemService, private route: Router, private serviceHttp: RestaurantService) { }
+  constructor(private formBuilder: FormBuilder, private service: OrderItemService, private route: Router, private serviceHttp: RestaurantService) { }
 
   ngOnInit() {
+    this.formGroup = this.formBuilder.group({
+      name: this.formBuilder.control(''),
+      email: this.formBuilder.control(''),
+      emailConfirmation: this.formBuilder.control(''),
+      address: this.formBuilder.control(''),
+      number: this.formBuilder.control(''),
+      optionalAddress: this.formBuilder.control(''),
+      paymentOption: this.formBuilder.control(''),
+    })
   }
 
   itemsValue(): number{
