@@ -1,4 +1,4 @@
-import { RestaurantService } from "./restaurants/restaurant.service";
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpModule } from "@angular/http";
@@ -15,8 +15,6 @@ import { MenuComponent } from "./restaurants/restaurant-details/menu/menu.compon
 import { ShoppingCartComponent } from "./restaurants/restaurant-details/shopping-cart/shopping-cart.component";
 import { MenuItemsComponent } from "./restaurants/restaurant-details/menu-items/menu-items.component";
 import { ReviewsComponent } from "./restaurants/restaurant-details/reviews/reviews.component";
-import { ShoppingCartService } from "./restaurants/restaurant-details/shopping-cart.service";
-import { OrderItemService } from "./orders/order-item.service";
 import { OrderSummaryComponent } from "./orders/order-summary/order-summary.component";
 import { SharedModule } from "./shared/shared.module";
 
@@ -39,9 +37,10 @@ import { SharedModule } from "./shared/shared.module";
     BrowserModule,
     HttpModule,
     SharedModule,
+    CoreModule,
     AppRoutingModule,
   ],
-  providers: [RestaurantService, OrderItemService, ShoppingCartService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
