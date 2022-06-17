@@ -5,7 +5,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { RestaurantDetailsComponent } from "./restaurants/restaurant-details/restaurant-details.component";
 import { RestaurantsComponent } from "./restaurants/restaurants.component";
-import { OrdersComponent } from "./orders/orders.component";
 import { OrderSummaryComponent } from "./orders/order-summary/order-summary.component";
 
 const routes: Routes = [
@@ -22,7 +21,7 @@ const routes: Routes = [
       { path: "reviews", component: ReviewsComponent },
     ],
   },
-  { path: "order", component: OrdersComponent },
+  { path: "order", loadChildren:'./orders/orders.module#OrdersModule' },
   { path: "order-summary", component: OrderSummaryComponent },
   //{path:'home', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)},
   //{path:'task', loadChildren: () => import('./task/task.module').then((m) => m.TaskModule)},
