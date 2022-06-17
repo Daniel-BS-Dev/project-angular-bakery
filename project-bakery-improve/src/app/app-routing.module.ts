@@ -2,7 +2,6 @@ import { ReviewsComponent } from "./restaurants/restaurant-details/reviews/revie
 import { MenuComponent } from "./restaurants/restaurant-details/menu/menu.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AboutComponent } from "./about/about.component";
 import { HomeComponent } from "./home/home.component";
 import { RestaurantDetailsComponent } from "./restaurants/restaurant-details/restaurant-details.component";
 import { RestaurantsComponent } from "./restaurants/restaurants.component";
@@ -12,7 +11,7 @@ import { OrderSummaryComponent } from "./orders/order-summary/order-summary.comp
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "home" },
   { path: "home", component: HomeComponent },
-  { path: "about", component: AboutComponent },
+  { path: "about", loadChildren:'./about/about.module#AboutModule'},
   { path: "restaurant", component: RestaurantsComponent },
   {
     path: "restaurant/:id",
