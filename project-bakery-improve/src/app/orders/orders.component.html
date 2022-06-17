@@ -33,6 +33,7 @@
               <mt-input-container errorMessage="Campo obrigatorio." label="EmailConfirmation">
                 <input type="email" class="form-control" formControlName="emailConfirmation" placeholder="Confirmação de email">
               </mt-input-container> 
+            <div><span *ngIf="formGroup.hasError('emailNoMatch')" class="help-block has-error-block"><i class="fa fa-remove"> Email não são igauis </i></span></div>
             </div>
           </div>
 
